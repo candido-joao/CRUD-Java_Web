@@ -68,6 +68,8 @@ public class UsuarioController {
             for (UsuarioModel usuario: usuarios) {
                 if (usuario.getId() == id) {
                     usuario.setNome(nome);
+                    usuario.setCpf(cpf);
+                    usuario.setTelefone(telefone);
                     break;
                 }
             }
