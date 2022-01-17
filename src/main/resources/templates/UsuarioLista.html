@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestão de Cadastros</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6544/6544175.png">
+    <style>
+        body{
+            background-color: #bebcbc;
+        }
+
+        h1{
+            font-size: 48px;
+            color: #ed1b24;
+            padding: 2px 0 10px 0;
+            font-family: Arial,sans-serif;
+            font-weight: bold;
+            text-align: center;
+            padding-bottom: 30px;
+        }
+
+        .content{
+            width: 30%;
+            min-height: 105%;
+            margin: 0px auto;
+            position: relative;
+            border:1px solid #000;
+            padding:20px;
+            background-color: #fff;
+        }
+
+        .botaoNovo{
+            width: 100%!important;
+            cursor: pointer;
+            background: #ed1b24;
+            padding: 8px 5px;
+            color: #fff;
+            font-size: 20px;
+            border: 1px solid #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 1px #333;
+
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+
+            transition: all 0.2s linear;
+        }
+
+        table{
+            width: 100%;
+            display:inline-block;
+            border:1px solid #000;
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>
+            Lista de Cadastros
+        </h1>
+        <table>
+            <tr>
+                <td>
+                    Usuario
+                </td>
+                <td>
+                    ID
+                </td>
+                <td>
+                    CPF
+                </td>
+                <td>
+                    Telefone
+                </td>
+                <td>
+                    Excluir
+                </td>
+                <td>
+                    Alterar
+                </td>
+            </tr>
+        <!--/*@thymesVar id="usuario" type="com.example.demo.Models.UsuarioModel"*/-->
+        <div th:each="usuario : ${usuarios}">
+            <tr>
+                <td>
+                    <div th:text="${usuario.nome}"></div>
+                </td>
+                <td>
+                    <div th:text="${usuario.id}"></div>
+                </td>
+                <td>
+                    <div th:text="${usuario.cpf}"></div>
+                </td>
+                <td>
+                    <div th:text="${usuario.telefone}"></div>
+                </td>
+                <td>
+                    <a th:href="@{http://localhost:8080/Usuario/Excluir(id=${usuario.id})}">Excluir</a>
+                </td>
+                <td>
+                    <a th:href="@{http://localhost:8080/Usuario/Alterar(id=${usuario.id})}">Alterar</a>
+                </td>
+            </tr>
+        </div>
+        </table>
+        <a th:href="@{http://localhost:8080/Usuario/Novo}"><button class="botaoNovo">Novo</button></a>
+    </div>
+</body>
+</html>
